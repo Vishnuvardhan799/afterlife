@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocalParticipant } from "@livekit/components-react";
 import { Mic, MicOff, X } from "lucide-react";
-// User mentioned 'voice-assistant-icon.jpg' but it does not exist in the assets folder.
-// Using 'placeholder.svg' from the public folder as a placeholder.
-// Please replace with the correct image path if available.
-import voiceAssistantIcon from "@/assets/voice-assistant-icon.jpg";
+import Avatar3D from "./Avatar3D";
 
 const AvatarVoiceAgent = ({ onClose }) => {
   const { localParticipant } = useLocalParticipant();
@@ -44,66 +41,56 @@ const AvatarVoiceAgent = ({ onClose }) => {
         border: "1px solid #f0f0f0",
         boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
         borderRadius: "32px",
-        maxWidth: "280px",
-        minWidth: "240px",
-        height: "64px",
+        width: "320px",
+        height: "400px",
         zIndex: 50,
         display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "0 1rem",
+        flexDirection: "column",
+        padding: "1rem",
       }}
     >
-      {/* Left: Mic toggle button */}
-      <button
-        onClick={toggleListening}
-        style={{
-          padding: "0.5rem",
-          borderRadius: "50%",
-          backgroundColor: "transparent",
-          color: isListening ? "#D4AF37" : "#6b7280",
-          border: "none",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        aria-label={isListening ? "Stop listening" : "Start listening"}
-      >
-        {isListening ? <Mic size={24} /> : <MicOff size={24} />}
-      </button>
+      <div style={{ flex: 1, position: 'relative' }}>
+        <Avatar3D />
+      </div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "1rem" }}>
+        {/* Left: Mic toggle button */}
+        <button
+          onClick={toggleListening}
+          style={{
+            padding: "0.5rem",
+            borderRadius: "50%",
+            backgroundColor: "transparent",
+            color: isListening ? "#D4AF37" : "#6b7280",
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          aria-label={isListening ? "Stop listening" : "Start listening"}
+        >
+          {isListening ? <Mic size={24} /> : <MicOff size={24} />}
+        </button>
 
-      {/* Center: Image */}
-      <img
-        src={voiceAssistantIcon}
-        alt="Voice Assistant"
-        style={{
-          width: "50px",
-          height: "50px",
-          borderRadius: "60%",
-          backgroundColor: "#f3f4f6",
-          objectFit: "cover",
-        }}
-      />
-
-      {/* Right: Close (X) button */}
-      <button
-        onClick={handleClose}
-        style={{
-          padding: "0.5rem",
-          borderRadius: "50%",
-          backgroundColor: "transparent",
-          color: "#6b7280",
-          border: "none",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        aria-label="Close"
-      >
-        <X size={24} />
-      </button>
+        {/* Right: Close (X) button */}
+        <button
+          onClick={handleClose}
+          style={{
+            padding: "0.5rem",
+            borderRadius: "50%",
+            backgroundColor: "transparent",
+            color: "#6b7280",
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          aria-label="Close"
+        >
+          <X size={24} />
+        </button>
+      </div>
     </div>
   );
 };
