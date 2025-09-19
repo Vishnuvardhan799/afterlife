@@ -10,7 +10,7 @@ import FitnessCenter from "./pages/FitnessCenter";
 import ValetParking from "./pages/ValetParking";
 import NotFound from "./pages/NotFound";
 import BookingConfirmation from "./pages/BookingConfirmation";
-import Test3D from "./pages/Test3D";
+// import Test3D from "./pages/Test3D";
 
 const queryClient = new QueryClient();
 
@@ -27,7 +27,7 @@ const App = () => (
           <Route path="/fitness-center" element={<FitnessCenter />} />
           <Route path="/valet-parking" element={<ValetParking />} />
           <Route path="/bookingconfirmation" element={<BookingConfirmation />} />
-          <Route path="/test-3d" element={<Test3D />} />
+{/*           <Route path="/test-3d" element={<Test3D />} /> */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
